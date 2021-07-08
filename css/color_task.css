@@ -38,7 +38,10 @@ background: #ececec;
 border: 1px solid #f9f9f9;
 padding: 6px 12px;
 }
-
+.sp-dd{
+    padding: 2px 8px;
+    color: #979797;
+}
 .background_options, .name_options, .contact_button_color{
     margin: 0px 0px 18px;
 }
@@ -64,6 +67,7 @@ background-color: #ffffff;
 
 .name_designation{
     display: grid;
+    margin-left: 12px;
 }
 
 .userprofile{
@@ -99,3 +103,24 @@ li.contact_me a{
     font-size: 14px;
     color: #fff;
 }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiparrow {
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    margin-left: -60px;
+  }
+  
+  .tooltip .tooltiparrow::after {
+    content: "";
+    position: absolute;
+    top: 34px;
+    border-width: 14px;
+    border-style: solid;
+    border-color: #43a2fa transparent transparent transparent;
+  }
