@@ -1,0 +1,88 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+body{
+    font-family: sans-serif;
+}
+.menu{
+    display: flex;
+    margin: 24px 0px;
+    justify-content: space-around;
+}
+.menu li{
+    background-color: #ececec;
+    color:#000;
+    text-align: center;
+    padding: 12px 24px;
+    width: 100%;
+    margin: 0px 24px;
+    font-size: 18px;
+    letter-spacing: 0.4px;
+}
+li.active{
+    background-color: #43a2fa;
+    color: #ffff;
+}
+.menu_options{
+    display: flex;
+}
+.heading_options,.sidebar_options,.mainbody_options{
+    width: 30%;
+    margin: 0px 32px;
+}
+.sp-replacer{
+background: #ececec;
+border: 1px solid #f9f9f9;
+padding: 6px 12px;
+}
+
+.background_options, .name_options, .contact_button_color{
+    margin: 0px 0px 18px;
+}
+
+.color_picker{
+border: 1px solid #f9f9f9;
+padding: 0px 12px;
+background-color: #ffffff;
+}
+.downarrow{
+    color: #a1a1a1;
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.userprofile{
+    display: flex;
+    justify-content: space-between;
+    margin: 48px 0px;
+    padding: 24px;
+    background-color: red;
+}
+.user_menu{
+    display: flex;
+    align-items: center;
+}
+.user_menu li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    margin: 0px 12px;
+}
+li.contact_me{
+    border: 1px solid;
+    padding: 8px;
+    background-color: #fffffd;
+}
+li.contact_me a{
+    color: #000;
+}
+.name{
+    font-size: 24px;
+    color: #fff;
+}
+.designation{
+    font-size: 14px;
+    color: #fff;
+}
