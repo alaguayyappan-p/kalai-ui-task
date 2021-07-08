@@ -1,3 +1,7 @@
+$(".menu li").on("click",function(){
+$(".menu li").removeClass("active");
+$(this).addClass("active");
+})
 
 $(".background_color").spectrum({
     color:"#fb0a0c",
@@ -9,7 +13,7 @@ $(".background_color").spectrum({
 $(".menutext_color").spectrum({
     color:"#ffffff",
     change: function(color){
-        $(".userprofile").css("background-color","#"+color.toHex());
+        $(".user_option a").css("color","#"+color.toHex());
     }
 });
 
@@ -23,20 +27,20 @@ $(".name_color").spectrum({
 $(".designation_color").spectrum({
     color:"#fafafa",
     change: function(color){
-        $(".userprofile").css("color","#"+color.toHex());
+        $(".designation").css("color","#"+color.toHex());
     }
 });
 
 $(".contactbutton_color").spectrum({
     color:"#ffffff",
     change: function(color){
-        $(".contactbutton_color").css("background-color","#"+color.toHex());
+        $(".contact_me").css("background-color","#"+color.toHex());
     }
 });
 
 $(".contacttext_color").spectrum({
     color:"#fb0a0c",
     change: function(color){
-        $(".contacttext_color").css("color","#"+color.toHex());
+        $(".contact_me a").css("color","#"+color.toHex());
     }
 });
