@@ -4,7 +4,7 @@
     list-style: none;
 }
 body{
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 .menu{
     display: flex;
@@ -25,6 +25,7 @@ li.active{
     background-color: #43a2fa;
     color: #ffff;
 }
+
 .menu_options{
     display: flex;
 }
@@ -51,6 +52,18 @@ background-color: #ffffff;
     color: #a1a1a1;
     font-size: 12px;
     margin-left: 8px;
+}
+.user{
+    display: flex;
+}
+.logo{
+    height: 50px;
+    width: 50px;
+    fill: #fff;
+}
+
+.name_designation{
+    display: grid;
 }
 
 .userprofile{
