@@ -30,7 +30,8 @@ li.active{
 .menu_options{
     display: flex;
 }
-.heading_options,.sidebar_options,.mainbody_options{
+.heading_options,.profile_options,.contact_options,.website_options,.phoneno_options,
+.profile_background_options,.profile_button_options,.profile_hyperlink{
     width: 100%;
     margin-right: 16px;
 }
@@ -38,6 +39,7 @@ li.active{
 border: 1px solid #f9f9f9;
 padding:12px;
 border-radius: 3px;
+margin: 8px 0px;
 }
 .sp-preview{
 width: 20px;
@@ -47,23 +49,20 @@ border: none;
     padding: 2px 8px;
     color: #979797;
 }
-.background_options, .name_options, .contact_button_color{
-    margin: 0px 0px 18px;
-}
 
 .tooltip {
     position: relative;
     display: inline-block;
   }
   
-.tooltip .tooltiparrow {
+  .tooltip .tooltiparrow {
     border-radius: 6px;
     position: absolute;
     z-index: 1;
     margin-left: -60px;
   }
   
-.tooltip .tooltiparrow::after {
+  .tooltip .tooltiparrow::after {
     content: "";
     position: absolute;
     top: 34px;
@@ -71,6 +70,7 @@ border: none;
     border-style: solid;
     border-color: #43a2fa transparent transparent transparent;
   }
+
 
 .user{
     display: flex;
@@ -122,3 +122,91 @@ li.contact_me{
 li.contact_me a{
     color: #333;
 }
+
+.asidebar_options,.mainbody_options{
+    display: none;
+}
+
+.userprofile_details{
+    display: flex;
+    width: 100%;
+}
+
+.leftside{
+    width: 65%;
+    padding: 0px 12px;
+}
+.aside{
+    width: 25%;
+    padding: 0px 12px;
+    background-color: #f5cfca;
+}
+.title{
+    color:#f5c7c2;
+    font-weight: 600;
+}
+a.page_link{
+color: #eaddb9;
+}
+p{
+    padding: 12px 0px;
+}
+.contrary{
+   background-color : #f5cfca;
+}
+a.send{
+    text-decoration: none;
+    background-color: #f62701;
+    border-radius: 80px;
+    padding: 6px 108px;
+}
+a.help{
+text-decoration: none;
+padding: 4px 48px;
+}
+.userhelpbutton{
+    margin: 12px 0px;
+}
+.userchoice{
+    margin: 16px 0px;
+}
+a.getintouch {
+    color: #fff;
+    background: #f83300;
+}
+
+a.visitwebsite{
+    color:#f83300;
+    background-color: #fff;
+}
+.icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    margin: 0px 8px;
+}
+  @media(max-width:768px){
+      .menu_options{
+          font-size: 12px;
+      }
+    .heading_options,.profile_options,.contact_options{
+        margin: 0px 20px;
+    } 
+  }
+ 
+ @media(max-width:499px){
+      .menu li{
+          padding: 0px 12px;
+          margin: 0px 6px;
+      }
+      .heading_options,.profile_options,.contact_options{
+        margin: 0px 8px;
+    }
+    .tooltip .tooltiparrow::after{
+        top:24px;
+        border-width: 8px;
+    }
+    .user_menu li a{
+        font-size: 14px;
+    }
+  } 
