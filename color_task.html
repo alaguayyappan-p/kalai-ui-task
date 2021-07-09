@@ -14,20 +14,23 @@
 <body>
     <header>
         <ul class="menu">
-            <li class="active tooltip">
+            <li class="active tooltip" data-id="heading">
                 Heading
                 <span class="tooltiparrow"></span>
             </li>
-            <li>
+            <li data-id="sidebar">
                 Sidebar
                 <span class="tooltiparrow"></span>
             </li>
-            <li>
+            <li data-id="mainbody">
                 Main body
                 <span class="tooltiparrow"></span>
             </li>
         </ul>
-        <div class="menu_options">
+
+        <!-- heading menu options -->
+
+        <div class="menu_options" data-content-id="heading">
             <div class="heading_options">
                 <div class="background_options">
                     <input type="text" class="background_color">
@@ -38,7 +41,7 @@
                     Menu text color
                 </div>
             </div>
-            <div class="sidebar_options">
+            <div class="profile_options">
                 <div class="name_options">
                     <input type="text" class="name_color">
                     Your Name
@@ -48,7 +51,7 @@
                     Designation
                 </div>
             </div>
-            <div class="mainbody_options">
+            <div class="contact_options">
                 <div class="contact_button_color">
                     <input type="text" class="contactbutton_color">
                     Contact button color
@@ -59,6 +62,74 @@
                 </div>
             </div>
         </div>
+
+        <!-- asidebar_options -->
+
+        <div class="asidebar_options" data-content-id="sidebar">
+            <div class="heading_options">
+                <div class="getin_touch">
+                    <input type="text" class="getin_touch_button_color">
+                    Get in Touch button color
+                </div>
+                <div class="text_options">
+                    <input type="text" class="getin_touch_text_color">
+                    Get in Touch text color
+                </div>
+            </div>
+            <div class="website_options">
+                <div class="website_button">
+                    <input type="text" class="website_button_color">
+                    Website button color
+                </div>
+                <div class="website_text">
+                    <input type="text" class="website_text_color">
+                    Website text color
+                </div>
+            </div>
+            <div class="phoneno_options">
+                <div class="phoneno_text_color">
+                    <input type="text" class="phoneno_color">
+                    Phone # color
+                </div>
+                <div class="aside_color">
+                    <input type="text" class="asidebar_color">
+                    Sidebar color
+                </div>
+            </div>
+        </div>
+
+        <!-- main body options -->
+
+        <div class="mainbody_options" data-content-id="mainbody">
+            <div class="profile_background_options">
+                <div class="profile_background_options">
+                    <input type="text" class="profile_background_color">
+                    Profile Background color
+                </div>
+                <div class="profile_text_options">
+                    <input type="text" class="body_menutext_color">
+                    Profile text color
+                </div>
+            </div>
+            <div class="profile_button_options">
+                <div class="profilebutton_options">
+                    <input type="text" class="profile_button_color">
+                    Profile button color
+                </div>
+                <div class="designation_options">
+                    <input type="text" class="profile_text_color">
+                    Profile button text color
+                </div>
+            </div>
+            <div class="profile_hyperlink">
+                <div class="profile_hyperlink_color">
+                    <input type="text" class="hyperlink_color">
+                    Hyperlink color
+                </div>
+            </div>
+        </div>
+
+
         <div class="userprofile">
             <div class="user">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"
@@ -85,8 +156,71 @@
                 </li>
             </ul>
         </div>
+
     </header>
 
+    <div class="userprofile_details">
+        <div class="leftside">
+            <h2 class="title">There are many variations of passages</h4>
+                <p>
+                    <a href="javascript:;" class="page_link">There are many variations of passages</a>
+                    There are many variations of passages of Lorem Ipsum
+                    available,but the majarity have suffered
+                    alteration in some form,by injected humour,or randomised
+                    words which don't look even slightly believable.if
+                    you are going to use a passage of Lorem Ipsum
+                </p>
+                <p>
+                    There are many variations of passages of Lorem Ipsum available
+                    but the majarity have suffered alteration in some
+                    form,by injected humour,or randomised words which
+                    don't look even slightly believable.If you are going
+                    to use a passage of Lorem Ipsum,
+                </p>
+                <div class="contrary">
+                    <!-- <img src="images/profileuser.jpg" alt="profile user"> -->
+                    <p>
+                    <h4>Contrary to popular belief</h4>
+                    contrary to popular belief,Lorem Ipsum
+                    is not simply random text.It has roots in a piece of Classical
+                    Latin from 45 BC,making it over 2000 years old.Richard McClintock,a
+                    </p>
+                    <div>
+                        <a href="javascript:;" class="send">Send it To Me!</a>
+                    </div>
+                </div>
+        </div>
+        <div class="aside">
+            <div class="profile_details">
+                <svg xmlns="http://www.w3.org/2000/svg" height="240px" version="1.1" width="240px">
+                    <g transform="translate(0 -1028.4)">
+                        <path d="m17 4a5 5 0 1 1 -10 0 5 5 0 1 1 10 0z" fill="#34495e"
+                            transform="translate(0 1031.4)" />
+                        <path
+                            d="m12 11c-1.277 0-2.4943 0.269-3.5938 0.75-2.8856 1.262-4.9781 3.997-5.3437 7.25 0 1.105 0.8329 2 1.9375 2h14c1.105 0 1.938-0.895 1.938-2-0.366-3.253-2.459-5.988-5.344-7.25-1.1-0.481-2.317-0.75-3.594-0.75z"
+                            fill="#34495e" transform="translate(0 1028.4)" />
+                    </g>
+                </svg>
+                <div>Your Name</div>
+                <div>Company Name</div>
+                <div>Designation</div>
+            </div>
+            <div class="mobileno">123-234-2112</div>
+            <div class="userhelpbutton">
+                <div class="userchoice">
+                    <a href="javascript:;" class="help getintouch">Get In Touch</a>
+                </div>
+                <div class="userchoice">
+                    <a href="javascript:;" class="help visitwebsite">visit Website</a>
+                </div>
+            </div>
+            <div class="socialicons">
+                <img src="images/fb.jpg" class="icon">
+                <img src="images/tw.jpg" class="icon">
+                <img src="images/linken.jpg" class="icon">
+            </div>
+        </div>
+    </div>
 
 
     <script src="js/jquery.min.js"></script>
