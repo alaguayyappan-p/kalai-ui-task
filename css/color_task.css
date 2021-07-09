@@ -4,7 +4,8 @@
     list-style: none;
 }
 body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 24px;
 }
 .menu{
     display: flex;
@@ -17,7 +18,7 @@ body{
     text-align: center;
     padding: 12px 24px;
     width: 100%;
-    margin: 0px 24px;
+    margin-right: 16px;
     font-size: 18px;
     letter-spacing: 0.4px;
 }
@@ -30,13 +31,17 @@ li.active{
     display: flex;
 }
 .heading_options,.sidebar_options,.mainbody_options{
-    width: 30%;
-    margin: 0px 32px;
+    width: 100%;
+    margin-right: 16px;
 }
 .sp-replacer{
-background: #ececec;
 border: 1px solid #f9f9f9;
-padding: 6px 12px;
+padding:12px;
+border-radius: 3px;
+}
+.sp-preview{
+width: 20px;
+border: none;
 }
 .sp-dd{
     padding: 2px 8px;
@@ -46,16 +51,27 @@ padding: 6px 12px;
     margin: 0px 0px 18px;
 }
 
-.color_picker{
-border: 1px solid #f9f9f9;
-padding: 0px 12px;
-background-color: #ffffff;
-}
-.downarrow{
-    color: #a1a1a1;
-    font-size: 12px;
-    margin-left: 8px;
-}
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+.tooltip .tooltiparrow {
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    margin-left: -60px;
+  }
+  
+.tooltip .tooltiparrow::after {
+    content: "";
+    position: absolute;
+    top: 34px;
+    border-width: 14px;
+    border-style: solid;
+    border-color: #43a2fa transparent transparent transparent;
+  }
+
 .user{
     display: flex;
 }
@@ -69,11 +85,21 @@ background-color: #ffffff;
     display: grid;
     margin-left: 12px;
 }
-
+.name{
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+}
+.designation{
+    font-size: 14px;
+    color: #fff;
+    padding-left: 4px;
+}
 .userprofile{
     display: flex;
     justify-content: space-between;
     margin: 48px 0px;
+    margin-right: 16px;
     padding: 24px;
     background-color: red;
 }
@@ -81,46 +107,18 @@ background-color: #ffffff;
     display: flex;
     align-items: center;
 }
+.user_menu li{
+    margin-right: 24px;
+}
 .user_menu li a{
     text-decoration: none;
     color: #fff;
     font-size: 18px;
-    margin: 0px 12px;
 }
 li.contact_me{
-    border: 1px solid;
     padding: 8px;
     background-color: #fffffd;
 }
 li.contact_me a{
-    color: #000;
+    color: #333;
 }
-.name{
-    font-size: 24px;
-    color: #fff;
-}
-.designation{
-    font-size: 14px;
-    color: #fff;
-}
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .tooltip .tooltiparrow {
-    border-radius: 6px;
-    position: absolute;
-    z-index: 1;
-    margin-left: -60px;
-  }
-  
-  .tooltip .tooltiparrow::after {
-    content: "";
-    position: absolute;
-    top: 34px;
-    border-width: 14px;
-    border-style: solid;
-    border-color: #43a2fa transparent transparent transparent;
-  }
