@@ -4,8 +4,19 @@
     list-style: none;
 }
 body{
+    /* font-family: "PT Sans"; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: aliceblue;
+}
+.blog{
+    margin: 0 auto;
+    width: 70%;
+}
+.wrapper{
     margin: 24px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    padding: 24px;
 }
 .menu{
     display: flex;
@@ -79,7 +90,10 @@ border: none;
     height: 50px;
     width: 50px;
     fill: #fff;
+    border-radius: 30px;
 }
+
+
 
 .name_designation{
     display: grid;
@@ -98,8 +112,7 @@ border: none;
 .userprofile{
     display: flex;
     justify-content: space-between;
-    margin: 48px 0px;
-    margin-right: 16px;
+    margin: 48px 0px 20px;
     padding: 24px;
     background-color: red;
 }
@@ -127,23 +140,38 @@ li.contact_me a{
     display: none;
 }
 
+.bodyuser{
+    box-shadow: 0 0 9px 1px rgb(0 0 0 / 13%);
+}
+
 .userprofile_details{
     display: flex;
-    width: 100%;
+    width: 95%;
+    padding: 0px 12px 64px;
 }
 
 .leftside{
     width: 65%;
-    padding: 0px 12px;
+    padding: 0px 16px;
 }
+
 .aside{
-    width: 25%;
+    width: 30%;
     padding: 0px 12px;
+    margin-top: -20px;
     background-color: #f5cfca;
 }
+.aside_profile{
+    padding: 12px;
+    margin-top: 24px;
+}
+.asideprofile_img{
+    width: 100%;
+}
 .title{
-    color:#f5c7c2;
-    font-weight: 600;
+    color:#000;
+    font-weight:bold;
+    padding-bottom: 6px;
 }
 a.page_link{
 color: #eaddb9;
@@ -152,17 +180,39 @@ p{
     padding: 12px 0px;
 }
 .contrary{
+    display: flex;
    background-color : #f5cfca;
+   padding: 16px;
+}
+.contrary_details {
+    color: #f70905;
+    padding: 0px 6px 0px 6px;
+}
+
+.sendbutton{
+    text-align: center;
+    padding: 12px;
 }
 a.send{
     text-decoration: none;
     background-color: #f62701;
     border-radius: 80px;
-    padding: 6px 108px;
+    padding: 6px 24px;
+    color: #fff;
+    font-size: 16px;
+}
+.profile{
+    line-height: 24px;
+}
+.mobileno{
+    padding: 16px 0px;
+    font-weight: bold;
+    font-size: 20px;
 }
 a.help{
 text-decoration: none;
-padding: 4px 48px;
+padding: 4px 24px;
+line-height: 36px;
 }
 .userhelpbutton{
     margin: 12px 0px;
@@ -179,25 +229,47 @@ a.visitwebsite{
     color:#f83300;
     background-color: #fff;
 }
+.socialicons{
+   display: flex;
+   align-items: center;
+}
 .icon{
     width: 30px;
     height: 30px;
     border-radius: 30px;
     margin: 0px 8px;
 }
+@media(min-width:1400px){
+    a.help{
+        padding: 4px 68px;
+    }
+    a.send{
+padding: 6px 108px;
+    }
+}
   @media(max-width:768px){
+      .blog{
+          width: 100%;
+      }
       .menu_options{
           font-size: 12px;
       }
     .heading_options,.profile_options,.contact_options{
         margin: 0px 20px;
-    } 
+    }
+    a.send{
+        padding: 6px 16px;
+        font-size: 12px;
+    }
   }
  
  @media(max-width:499px){
       .menu li{
-          padding: 0px 12px;
-          margin: 0px 6px;
+          padding: 0px 8px;
+          margin: 0px 4px;
+      }
+      .menu_options{
+          flex-flow: column;
       }
       .heading_options,.profile_options,.contact_options{
         margin: 0px 8px;
@@ -208,5 +280,65 @@ a.visitwebsite{
     }
     .user_menu li a{
         font-size: 14px;
+    }
+    .userprofile{
+        margin: 0px;
+        padding: 24px 12px;
+    }
+    .name_designation span{
+        display: block;
+        margin-right: 16px;
+        margin-left: 6px;
+    }
+    .name{
+        font-size: 14px;
+    }
+    .designation{
+        font-size: 10px;
+        padding-left: 4px;
+    }
+    li.contact_me{
+        padding: 0;
+    }
+    .user_menu li{
+        margin-right: 4px;
+    }
+    .leftside{
+        padding: 0px 6px;
+    }
+    .title,.contrary_title{
+        font-size: 14px;
+    }
+    .leftside_para,.contrary_details_para,.mobileno{
+        font-size: 12px;
+    }
+    .contrary{
+        padding: 6px 6px 18px;
+        flex-flow: column;
+    }
+    .sendbutton{
+        padding: 0;
+    }
+    .aside{
+        margin: 0px;
+    }
+    .aside_profile{
+        padding: 0px;
+    }
+    .profile{
+        line-height: 18px;
+        font-size: 10px;
+    }
+    a.help{
+        display: block;
+    padding: 4px;
+    font-size: 12px;
+    margin: 6px 0px;
+    line-height: 14px;
+    }
+    .icon{
+        width: 18px;
+        height: 18px;
+        margin: 0px 2px;
     }
   } 
