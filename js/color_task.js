@@ -12,6 +12,12 @@ $("[data-content-id*='" + usercolor + "']").css("display","flex");
 
 $(".background_color").spectrum({
     color:"#fb0a0c",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".userprofile").css("background-color","#"+color.toHex());
     }
@@ -19,6 +25,12 @@ $(".background_color").spectrum({
 
 $(".menutext_color").spectrum({
     color:"#ffffff",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".user_option a").css("color","#"+color.toHex());
     }
@@ -26,6 +38,12 @@ $(".menutext_color").spectrum({
 
 $(".name_color").spectrum({
     color:"#ffffff",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".name").css("color","#"+color.toHex());
     }
@@ -33,6 +51,12 @@ $(".name_color").spectrum({
 
 $(".designation_color").spectrum({
     color:"#fafafa",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".designation").css("color","#"+color.toHex());
     }
@@ -40,6 +64,12 @@ $(".designation_color").spectrum({
 
 $(".contactbutton_color").spectrum({
     color:"#ffffff",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".contact_me").css("background-color","#"+color.toHex());
     }
@@ -47,6 +77,12 @@ $(".contactbutton_color").spectrum({
 
 $(".contacttext_color").spectrum({
     color:"#fb0a0c",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".contact_me a").css("color","#"+color.toHex());
     }
@@ -54,6 +90,12 @@ $(".contacttext_color").spectrum({
 
 $(".getin_touch_button_color").spectrum({
     color:"#f83300",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $("a.getintouch").css("background-color","#"+color.toHex());
     }
@@ -61,6 +103,12 @@ $(".getin_touch_button_color").spectrum({
 
 $(".getin_touch_text_color").spectrum({
     color:"#fff",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".getintouch").css("color","#"+color.toHex());
     }
@@ -68,6 +116,12 @@ $(".getin_touch_text_color").spectrum({
 
 $(".website_button_color").spectrum({
     color:"#fff",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".visitwebsite").css("background-color","#"+color.toHex());
     }
@@ -75,6 +129,12 @@ $(".website_button_color").spectrum({
 
 $(".website_text_color").spectrum({
     color:"#f83300",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".visitwebsite").css("color","#"+color.toHex());
     }
@@ -82,6 +142,12 @@ $(".website_text_color").spectrum({
 
 $(".phoneno_color").spectrum({
     color:"#000",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".mobileno").css("color","#"+color.toHex());
     }
@@ -89,6 +155,12 @@ $(".phoneno_color").spectrum({
 
 $(".asidebar_color").spectrum({
     color:"#f5cfca",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".aside").css("background-color","#"+color.toHex());
     }
@@ -98,6 +170,12 @@ $(".asidebar_color").spectrum({
 
 $(".profile_background_color").spectrum({
     color:"#f5cfca",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".contrary").css("background-color","#"+color.toHex());
     }
@@ -105,6 +183,12 @@ $(".profile_background_color").spectrum({
 
 $(".body_menutext_color").spectrum({
     color:"#f5cfca",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".contrary").css("color","#"+color.toHex());
     }
@@ -112,6 +196,12 @@ $(".body_menutext_color").spectrum({
 
 $(".profile_button_color").spectrum({
     color:"#f62701",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".send").css("background-color","#"+color.toHex());
     }
@@ -119,6 +209,12 @@ $(".profile_button_color").spectrum({
 
 $(".profile_text_color").spectrum({
     color:"#fff",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".send").css("color","#"+color.toHex());
     }
@@ -126,6 +222,12 @@ $(".profile_text_color").spectrum({
 
 $(".hyperlink_color").spectrum({
     color:"#eaddb9",
+    showPalette: true,
+    showSelectionPalette: true,
+    showInput: true,
+    preferredFormat: "hex",
+    reflow:true,
+    chooseText: "Set color",
     change: function(color){
         $(".page_link").css("color","#"+color.toHex());
     }
