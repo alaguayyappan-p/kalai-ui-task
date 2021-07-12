@@ -14,6 +14,7 @@
 body{
     font-family: 'PT Sans';
     background-color: aliceblue;
+    color: #333;
 }
 .blog{
     margin: 0 auto;
@@ -23,12 +24,11 @@ body{
     margin: 24px;
     background-color: #fff;
     border: 1px solid #e5e5e5;
-    padding: 24px;
+    padding: 18px 20px;
 }
 .menu{
     display: flex;
-    margin: 24px 0px;
-    justify-content: space-around;
+    margin: 0px 0px 14px;
 }
 .menu li{
     background-color: #ececec;
@@ -39,6 +39,7 @@ body{
     margin-right: 16px;
     font-size: 18px;
     letter-spacing: 0.4px;
+    cursor: pointer;
 }
 li.active{
     background-color: #43a2fa;
@@ -47,6 +48,7 @@ li.active{
 
 .menu_options{
     display: flex;
+    font-size: 16px;
 }
 .heading_options,.profile_options,.contact_options,.website_options,.phoneno_options,
 .profile_background_options,.profile_button_options,.profile_hyperlink{
@@ -54,20 +56,42 @@ li.active{
     margin-right: 16px;
 }
 .sp-replacer{
-border: 1px solid #f9f9f9;
-padding:12px;
+border: 1px solid #e5e5e5;
+padding:6px 8px;
 border-radius: 3px;
 margin: 8px 0px;
 }
+.sp-cancel{
+    display: none;
+}
+.sp-container{
+    background-color: #fff;
+    margin-top: 148px;
+}
+.sp-palette-container {
+    float: right;
+    border-right:none;
+    margin-top: 48px;
+}
+.sp-container button {
+    color: #fff;
+    padding: 5px;
+    background-color: #43a1f9;
+    background-image: none;
+    border-radius:30px;
+}
 .sp-preview{
 width: 20px;
-border: none;
+border: 1px solid #e5e5e5;
+background-image:none;
 }
 .sp-dd{
     padding: 2px 8px;
     color: #979797;
 }
-
+.sp-color, .sp-hue, .sp-clear.sp-color{
+    border:none;
+}
 .tooltip {
     position: relative;
     display: inline-block;
@@ -100,9 +124,9 @@ border: none;
     border-radius: 30px;
 }
 
-.name_designation{
-    display: grid;
-    margin-left: 12px;
+.name_designation span{
+    display: block;
+    margin-left: 8px;
 }
 .name{
     font-size: 24px;
@@ -110,7 +134,7 @@ border: none;
     font-weight: bold;
 }
 .designation{
-    font-size: 14px;
+    font-size: 10px;
     color: #fff;
     padding-left: 4px;
 }
@@ -138,14 +162,14 @@ li.contact_me{
     background-color: #fffffd;
 }
 li.contact_me a{
-    color: #333;
+    color: #f70905;
 }
 
 .asidebar_options,.mainbody_options{
     display: none;
 }
 
-.bodyuser{
+.profile_section{
     box-shadow: 0 0 9px 1px rgb(0 0 0 / 13%);
 }
 
@@ -179,15 +203,19 @@ li.contact_me a{
     padding-bottom: 6px;
 }
 a.page_link{
-color: #eaddb9;
+color: #cfaf63;
 }
 p{
     padding: 12px 0px;
+    font-size: 16px;
 }
 .contrary{
     display: flex;
    background-color : #f5cfca;
-   padding: 16px;
+   padding: 12px;
+}
+.contrary_title{
+    font-size: 20px;
 }
 .contrary_details {
     color: #f70905;
@@ -199,15 +227,17 @@ p{
     padding: 12px;
 }
 a.send{
+    display: block;
     text-decoration: none;
     background-color: #f62701;
     border-radius: 80px;
-    padding: 6px 24px;
+    padding: 8px 0px;
     color: #fff;
     font-size: 16px;
 }
 .profile{
     line-height: 24px;
+    font-size: 16px;
 }
 .mobileno{
     padding: 16px 0px;
@@ -215,9 +245,12 @@ a.send{
     font-size: 20px;
 }
 a.help{
-text-decoration: none;
-padding: 4px 24px;
-line-height: 36px;
+    display: block;
+    text-decoration: none;
+    margin: 8px 0px;
+    padding: 6px 0px;
+    text-align: center;
+    font-size: 16px;
 }
 .userhelpbutton{
     margin: 12px 0px;
@@ -243,21 +276,17 @@ a.visitwebsite{
     width: 30px;
     height: 30px;
     border-radius: 30px;
-    margin: 0px 8px;
+    margin: 0px 2px;
 }
-@media(min-width:1400px){
-    a.help{
-        padding: 4px 68px;
-    }
-    a.send{
-padding: 6px 108px;
-    }
-}
+
   @media(max-width:768px){
       .blog{
           width: 100%;
       }
       .menu_options{
+          font-size: 12px;
+      }
+      p,a.help{
           font-size: 12px;
       }
     .heading_options,.profile_options,.contact_options{
@@ -270,22 +299,31 @@ padding: 6px 108px;
   }
  
  @media(max-width:499px){
-      .menu li{
-          padding: 0px 8px;
+     .wrapper{
+         padding: 18px 8px;
+     }
+    .menu li{
+          padding: 4px 8px;
           margin: 0px 4px;
+          font-size: 14px;
       }
-      .menu_options{
+    .menu_options{
           flex-flow: column;
       }
-      .heading_options,.profile_options,.contact_options{
+   .heading_options,.profile_options,.contact_options{
         margin: 0px 8px;
     }
     .tooltip .tooltiparrow::after{
-        top:24px;
+        top:22px;
         border-width: 8px;
+        margin-left: 16px;
+    }
+    .user_menu li{
+        margin-right: 4px;
     }
     .user_menu li a{
-        font-size: 14px;
+        font-size: 12px;
+        margin-right: 12px;
     }
     .userprofile{
         margin: 0px;
@@ -306,16 +344,14 @@ padding: 6px 108px;
     li.contact_me{
         padding: 0;
     }
-    .user_menu li{
-        margin-right: 4px;
-    }
+
     .leftside{
         padding: 0px 6px;
     }
     .title,.contrary_title{
         font-size: 14px;
     }
-    .leftside_para,.contrary_details_para,.mobileno{
+    .mobileno{
         font-size: 12px;
     }
     .contrary{
@@ -327,6 +363,7 @@ padding: 6px 108px;
     }
     .aside{
         margin: 0px;
+        padding: 0px 6px;
     }
     .aside_profile{
         padding: 0px;
@@ -336,7 +373,6 @@ padding: 6px 108px;
         font-size: 10px;
     }
     a.help{
-        display: block;
     padding: 4px;
     font-size: 12px;
     margin: 6px 0px;
