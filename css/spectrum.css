@@ -1,0 +1,641 @@
+/***
+Spectrum Colorpicker v1.8.0
+https://github.com/bgrins/spectrum
+Author: Brian Grinstead
+License: MIT
+***/
+
+.sp-color-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  /* https://github.com/bgrins/spectrum/issues/40 */
+  z-index: 9999994;
+  overflow: hidden;
+}
+.sp-color-container.sp-color-flat {
+  position: relative;
+}
+
+/* Fix for * { box-sizing: border-box; } */
+.sp-color-container,
+.sp-color-container * {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+/* http://ansciath.tumblr.com/post/7347495869/css-aspect-ratio */
+.sp-color-top {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+.sp-color-top-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.sp-color-color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 15%;
+}
+.sp-color-hue {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 88%;
+  height: 100%;
+}
+
+.sp-color-clear-enabled .sp-color-hue {
+  top: 33px;
+  height: 77.5%;
+}
+
+.sp-color-fill {
+  padding-top: 80%;
+}
+.sp-color-sat,
+.sp-color-val {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.sp-color-alpha-enabled .sp-color-top {
+  margin-bottom: 18px;
+}
+.sp-color-alpha-enabled .sp-color-alpha {
+  display: block;
+}
+.sp-color-alpha-handle {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 6px;
+  left: 50%;
+  cursor: pointer;
+  border: 1px solid black;
+  background: white;
+  opacity: 0.8;
+}
+.sp-color-alpha {
+  display: none;
+  position: absolute;
+  bottom: -14px;
+  right: 0;
+  left: 0;
+  height: 8px;
+}
+.sp-color-alpha-inner {
+  border: 1px solid #333;
+}
+
+.sp-color-clear {
+  display: none;
+}
+
+.sp-color-clear.sp-color-clear-display {
+  background-position: center;
+}
+
+.sp-color-clear-enabled .sp-color-clear {
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  bottom: 0;
+  left: 84%;
+  height: 28px;
+}
+
+/* Don't allow text selection */
+.sp-color-container,
+.sp-color-replacer,
+.sp-color-preview,
+.sp-color-dragger,
+.sp-color-slider,
+.sp-color-alpha,
+.sp-color-clear,
+.sp-color-alpha-handle,
+.sp-color-container.sp-color-dragging .sp-color-input,
+.sp-color-container button {
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.sp-color-container.sp-color-input-disabled .sp-color-input-container {
+  display: none;
+}
+.sp-color-container.sp-color-buttons-disabled .sp-color-button-container {
+  display: none;
+}
+.sp-color-container.sp-color-palette-buttons-disabled
+  .sp-color-palette-button-container {
+  display: none;
+}
+.sp-color-palette-only .sp-color-picker-container {
+  display: none;
+}
+.sp-color-palette-disabled .sp-color-palette-container {
+  display: none;
+}
+
+.sp-color-initial-disabled .sp-color-initial {
+  display: none;
+}
+
+/* Gradients for hue, saturation and value instead of images.  Not pretty... but it works */
+.sp-color-sat {
+  background-image: -webkit-gradient(
+    linear,
+    0 0,
+    100% 0,
+    from(#fff),
+    to(rgba(204, 154, 129, 0))
+  );
+  background-image: -webkit-linear-gradient(left, #fff, rgba(204, 154, 129, 0));
+  background-image: -moz-linear-gradient(left, #fff, rgba(204, 154, 129, 0));
+  background-image: -o-linear-gradient(left, #fff, rgba(204, 154, 129, 0));
+  background-image: -ms-linear-gradient(left, #fff, rgba(204, 154, 129, 0));
+  background-image: linear-gradient(to right, #fff, rgba(204, 154, 129, 0));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr=#FFFFFFFF, endColorstr=#00CC9A81)";
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr='#FFFFFFFF', endColorstr='#00CC9A81');
+}
+.sp-color-val {
+  background-image: -webkit-gradient(
+    linear,
+    0 100%,
+    0 0,
+    from(#000000),
+    to(rgba(204, 154, 129, 0))
+  );
+  background-image: -webkit-linear-gradient(
+    bottom,
+    #000000,
+    rgba(204, 154, 129, 0)
+  );
+  background-image: -moz-linear-gradient(bottom, #000, rgba(204, 154, 129, 0));
+  background-image: -o-linear-gradient(bottom, #000, rgba(204, 154, 129, 0));
+  background-image: -ms-linear-gradient(bottom, #000, rgba(204, 154, 129, 0));
+  background-image: linear-gradient(to top, #000, rgba(204, 154, 129, 0));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00CC9A81, endColorstr=#FF000000)";
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00CC9A81', endColorstr='#FF000000');
+}
+
+.sp-color-hue {
+  background: -moz-linear-gradient(
+    top,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 67%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 67%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 67%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#ff0000),
+    color-stop(0.17, #ffff00),
+    color-stop(0.33, #00ff00),
+    color-stop(0.5, #00ffff),
+    color-stop(0.67, #0000ff),
+    color-stop(0.83, #ff00ff),
+    to(#ff0000)
+  );
+  background: -webkit-linear-gradient(
+    top,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 67%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 67%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+}
+
+/* IE filters do not support multiple color stops.
+   Generate 6 divs, line them up, and do two color gradients for each.
+   Yes, really.
+ */
+.sp-color-1 {
+  height: 17%;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0000', endColorstr='#ffff00');
+}
+.sp-color-2 {
+  height: 16%;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff00', endColorstr='#00ff00');
+}
+.sp-color-3 {
+  height: 17%;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ff00', endColorstr='#00ffff');
+}
+.sp-color-4 {
+  height: 17%;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffff', endColorstr='#0000ff');
+}
+.sp-color-5 {
+  height: 16%;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0000ff', endColorstr='#ff00ff');
+}
+.sp-color-6 {
+  height: 17%;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff00ff', endColorstr='#ff0000');
+}
+
+.sp-color-hidden {
+  display: none !important;
+}
+
+/* Clearfix hack */
+.sp-color-cf:before,
+.sp-color-cf:after {
+  content: "";
+  display: table;
+}
+.sp-color-cf:after {
+  clear: both;
+}
+.sp-color-cf {
+  display: block;
+  position: relative;
+}
+
+/* Mobile devices, make hue slider bigger so it is easier to slide */
+@media (max-device-width: 480px) {
+  .sp-color-color {
+    right: 40%;
+  }
+  .sp-color-hue {
+    left: 63%;
+  }
+  .sp-color-fill {
+    padding-top: 60%;
+  }
+}
+.sp-color-dragger {
+  border-radius: 5px;
+  height: 5px;
+  width: 5px;
+  border: 1px solid #fff;
+  background: #000;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.sp-color-slider {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  height: 3px;
+  left: -1px;
+  right: -1px;
+  border: 1px solid #000;
+  background: white;
+  opacity: 0.8;
+}
+
+/*
+Theme authors:
+Here are the basic themeable display options (colors, fonts, global widths).
+See http://bgrins.github.io/spectrum/themes/ for instructions.
+*/
+
+.sp-color-container {
+  border-radius: 0;
+  background-color: #fff;
+  padding: 0;
+  /* box-shadow: 0px 0px 4px 0px #0e0e0e; */
+  box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.13);
+}
+.sp-color-container,
+.sp-color-container button,
+.sp-color-container input,
+.sp-color-color,
+.sp-color-hue,
+.sp-color-clear {
+  font: normal 12px "PT Sans", Helvetica, Arial, Verdana, sans-serif;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.sp-color-top {
+  margin-bottom: 3px;
+  height: 264px;
+}
+.sp-color-color,
+.sp-color-hue,
+.sp-color-clear {
+  border: 1px solid #f4f4f4;
+}
+
+/* Input */
+.sp-color-input-container {
+  width: 100px;
+  margin-bottom: 4px;
+}
+.sp-color-initial-disabled .sp-color-input-container {
+  width: 100%;
+}
+.sp-color-input {
+  font-size: 12px !important;
+  border: 1px solid #555;
+  padding: 4px 5px;
+  margin: 0;
+  width: 100%;
+  background: transparent;
+  border-radius: 3px;
+  color: #555;
+}
+.sp-color-input:focus {
+  border: 1px solid #43a1f9;
+}
+.sp-color-input.sp-color-validation-error {
+  border: 1px solid red;
+  background: #fdd;
+}
+.sp-color-picker-container,
+.sp-color-palette-container {
+  float: left;
+  position: relative;
+  padding: 10px;
+  padding-bottom: 300px;
+  margin-bottom: -290px;
+}
+.sp-color-picker-container {
+  width: 300px;
+}
+
+/* Palettes */
+.sp-color-palette-container {
+  border-right: 1px solid #ccc;
+}
+.color_section {
+  padding-left: 0;
+}
+.sp-color-palette-only .sp-color-palette-container {
+  border: 0;
+}
+
+.sp-color-palette .sp-color-thumb-el {
+  display: inline-block;
+  position: relative;
+  /* float: left; */
+  margin: 3px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+/* //custom setup feature css // */
+.pal_text {
+  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: calc(100% - 30px);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #555;
+  font-size: 12px;
+}
+/* //custom setup feature css  end// */
+.sp-color-palette .sp-color-thumb-el:hover,
+.sp-color-palette .sp-color-thumb-el.sp-color-thumb-active {
+  border-color: #eeeeee;
+}
+.sp-color-thumb-el {
+  position: relative;
+}
+
+/* Initial */
+.sp-color-initial {
+  float: left;
+  border: 1px solid #333;
+}
+.sp-color-initial span {
+  width: 30px;
+  height: 25px;
+  border: none;
+  display: block;
+  float: left;
+  margin: 0;
+}
+
+.sp-color-initial .sp-color-clear-display {
+  background-position: center;
+}
+
+/* Buttons */
+.sp-color-palette-button-container,
+.sp-color-button-container {
+  float: right;
+}
+
+/* Replacer (the little preview div that shows up instead of the <input>) */
+.sp-color-replacer {
+  margin: 0px 0px 8px;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 6px 5px 5px;
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+  background: #fafafa;
+  color: #333;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+.sp-color-replacer:hover,
+.sp-color-replacer.sp-color-active {
+  box-shadow: 0px 0px 1px 0px #020202;
+}
+.sp-color-replacer.sp-color-disabled {
+  cursor: default;
+  border-color: silver;
+  color: silver;
+}
+.sp-color-dd {
+  padding: 2px 1px;
+  height: 14px;
+  line-height: 14px;
+  float: left;
+  font-size: 10px;
+  color: transparent;
+  margin: 0 5px;
+  top: 1px;
+  position: relative;
+  background-image: url("../images/color_picker_arrow.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px;
+}
+.sp-color-preview {
+  position: relative;
+  width: 17px;
+  height: 17px;
+  margin-right: 5px;
+  float: left;
+  z-index: 0;
+}
+
+.sp-color-palette {
+  *width: 220px;
+  max-width: 220px;
+}
+.sp-color-palette .sp-color-thumb-el {
+  width: 20px;
+  height: 20px;
+  margin: 6px 1px;
+  border: 0;
+}
+
+.sp-color-container {
+  padding-bottom: 0;
+}
+
+/* Buttons: http://hellohappy.org/css3-buttons/ */
+.sp-color-container button {
+  background-color: #43a1f9;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 14px;
+  line-height: normal;
+  padding: 5px 5px;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  border: 0 none;
+}
+.sp-color-container button:hover {
+  background-color: #66b1fa;
+}
+
+.sp-color-container button:focus,
+.sp-color-container button:active {
+  outline: none;
+}
+.sp-color-palette-row-selection {
+  max-height: 140px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+.sp-color-button-container.sp-color-cf {
+  float: none;
+}
+.sp-color-cancel {
+  font-size: 11px;
+  color: #d93f3f !important;
+  margin: 0;
+  padding: 2px;
+  margin-right: 5px;
+  vertical-align: middle;
+  text-decoration: none;
+  display: none;
+}
+.sp-color-cancel:hover {
+  color: #d93f3f !important;
+  text-decoration: underline;
+}
+
+.sp-color-palette span:hover,
+.sp-color-palette span.sp-color-thumb-active {
+  border-color: #000;
+}
+
+.sp-color-preview,
+.sp-color-alpha,
+.sp-color-thumb-el {
+  position: relative;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
+}
+.sp-color-preview-inner,
+.sp-color-alpha-inner,
+.sp-color-thumb-inner {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.sp-color-palette .sp-color-thumb-inner {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.sp-color-palette
+  .sp-color-thumb-light.sp-color-thumb-active
+  .sp-color-thumb-inner {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIVJREFUeNpiYBhsgJFMffxAXABlN5JruT4Q3wfi/0DsT64h8UD8HmpIPCWG/KemIfOJCUB+Aoacx6EGBZyHBqI+WsDCwuQ9mhxeg2A210Ntfo8klk9sOMijaURm7yc1UP2RNCMbKE9ODK1HM6iegYLkfx8pligC9lCD7KmRof0ZhjQACDAAceovrtpVBRkAAAAASUVORK5CYII=);
+}
+
+.sp-color-palette
+  .sp-color-thumb-dark.sp-color-thumb-active
+  .sp-color-thumb-inner {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjEwMPRyoQAAAMdJREFUOE+tkgsNwzAMRMugEAahEAahEAZhEAqlEAZhEAohEAYh81X2dIm8fKpEspLGvudPOsUYpxE2BIJCroJmEW9qJ+MKaBFhEMNabSy9oIcIPwrB+afvAUFoK4H0tMaQ3XtlrggDhOVVMuT4E5MMG0FBbCEYzjYT7OxLEvIHQLY2zWwQ3D+9luyOQTfKDiFD3iUIfPk8VqrKjgAiSfGFPecrg6HN6m/iBcwiDAo7WiBeawa+Kwh7tZoSCGLMqwlSAzVDhoK+6vH4G0P5wdkAAAAASUVORK5CYII=);
+}
+
+.sp-color-clear-display {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(data:image/gif;base64,R0lGODlhFAAUAPcAAAAAAJmZmZ2dnZ6enqKioqOjo6SkpKWlpaampqenp6ioqKmpqaqqqqurq/Hx8fLy8vT09PX19ff39/j4+Pn5+fr6+vv7+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAP8ALAAAAAAUABQAAAihAP9FoPCvoMGDBy08+EdhQAIJCCMybCDAAYUEARBAlFiQQoMABQhKUJBxY0SPICEYHBnggEmDKAuoPMjS5cGYMxHW3IiT478JJA8M/CjTZ0GgLRekNGpwAsYABHIypcAgQMsITDtWJYBR6NSqMico9cqR6tKfY7GeBCuVwlipDNmefAtTrkSzB1RaIAoXodsABiZAEFB06gIBWC1mLVgBa0AAOw==);
+}
+
+/*--BB custom styles --*/
+.color_pick_open_hide:not(.forced_watermark_memeonly) .sp-color-container {
+  max-width: 100%;
+}
+.sp-color-preview-inner {
+  border: 1px solid #e5e5e5;
+}
